@@ -16,19 +16,21 @@ env: {
 })
 .on('restart');
 });
+
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-livereload.listen();
-gulp.src(_paths, {
-read: false
-})
-.pipe(watch({
-emit: 'all'
-}))
-.pipe(jshint())
-.pipe(jshint.reporter('default'));
-watch(_paths, livereload.changed);
+	livereload.listen();
+	gulp.src(_paths, {
+		read: false
+	})
+	.pipe(watch({
+		emit: 'all'
+	}))
+	.pipe(jshint())
+	.pipe(jshint.reporter('default'));
+	watch(_paths, livereload.changed);
 });
+
 //lint js files
 gulp.task('lint', function() {
 gulp.src(_paths)
