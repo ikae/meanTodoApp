@@ -32,8 +32,7 @@ todoApp.controller('TodoCtrl', function($rootScope, $scope, todosFactory) {
       todo: _t.todo
     }).then(function(data) {
       //alert(JSON.stringify(data.data));
-      //if (data.data.updatedExisting) {
-      if (data.data.ok) {
+      if (data.data.nModified) {
         _t.isCompleted = cbk;
       } else {
         alert('Oops something went wrong!');
@@ -50,9 +49,8 @@ todoApp.controller('TodoCtrl', function($rootScope, $scope, todosFactory) {
         todo: $event.target.value.trim(),
         isCompleted: _t.isCompleted
       }).then(function(data) {
-        //alert(JSON.stringify(data.data.ok));
-        //if (data.data.updatedExisting) {
-        if (data.data.ok) {
+        //alert(JSON.stringify(data.data));
+        if (data.data.nModified) {
           _t.todo = $event.target.value.trim();
           $scope.isEditable[i] = false;
         } else {
